@@ -261,7 +261,7 @@ class docker::service (
   $registry_mirror                   = $docker::registry_mirror,
   $root_dir_flag                     = $docker::root_dir_flag,
 ) {
-  unless $facts['os']['family'] =~ /(Debian|RedHat|windows)/ or $::docker::acknowledge_unsupported_os {
+  unless $facts['os']['family'] =~ /(Debian|RedHat|windows|Suse)/ or $::docker::acknowledge_unsupported_os {
     fail(translate('The docker::service class needs a Debian, Redhat or Windows based system.'))
   }
 

@@ -478,8 +478,8 @@ class docker(
   Optional[String]                        $nuget_package_provider_version    = $docker::params::nuget_package_provider_version,
 ) inherits docker::params {
   if $facts['os']['family'] and ! $acknowledge_unsupported_os {
-    assert_type(Pattern[/^(Debian|RedHat|windows)$/], $facts['os']['family']) |$a, $b| {
-      fail(translate('This module only works on Debian, Red Hat or Windows based systems.'))
+    assert_type(Pattern[/^(Debian|RedHat|windows|Suse)$/], $facts['os']['family']) |$a, $b| {
+      fail(translate("This module only works on Debian, Red Hat or Windows based systems. ${facts['os']['family']}"))
     }
   }
 
